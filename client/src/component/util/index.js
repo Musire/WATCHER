@@ -1,3 +1,4 @@
 import Canvas from "./Canvas";
+import DetailBanner from "./DetailBanner"
 
-export { Canvas }
+export { Canvas, DetailBanner }

@@ -1,5 +1,5 @@
 import HomePage from "./HomePage"
 import { Sidebar } from "../component/sidebar"
-import { Canvas } from "../component/util"
+import { Canvas, DetailBanner } from "../component/util"
 
-export { HomePage, Sidebar, Canvas }
+export { HomePage, Sidebar, Canvas, DetailBanner }

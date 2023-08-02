@@ -1,9 +1,11 @@
-import { Canvas, Sidebar } from "./"
+import { Canvas, Sidebar, DetailBanner } from "./"
 
 const HomePage = () => {
     return ( 
         <section className="">
-            <Canvas />
+            <Canvas >
+                <DetailBanner />
+            </Canvas>
             <Sidebar />
         </section>
      );
