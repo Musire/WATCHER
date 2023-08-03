@@ -5,7 +5,7 @@ const Ledger = () => {
         <>
             <Canvas>
                 <Sidebar />
-                <Heading text={"Ledger"}/>
+                <Heading />
             </Canvas>
         </>
      );
