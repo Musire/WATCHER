@@ -1,5 +1,5 @@
 import { Main  } from "./pages"
-import { LedgerHome, AccountsHome, DetailsHome, Home } from "./partials"
+import { LedgerHome, AccountsHome, DetailsHome, Home, NewRecord } from "./partials"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 export default function App() {
@@ -11,6 +11,7 @@ export default function App() {
         </Route>
         <Route path="/ledger" element={<Main />} >
           <Route path="" element={<LedgerHome />} />
+          <Route path="new" element={<NewRecord />} />
         </Route>
         <Route path="/accounts" element={<Main />} >
           <Route path="" element={<AccountsHome />} />
