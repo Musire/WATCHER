@@ -1,7 +1,8 @@
 import { HiOutlineArrowNarrowLeft as Arrow, HiOutlinePlusCircle as Plus } from "react-icons/hi";
 import { useBack, useCurrent } from "../../hooks"
+import { Link } from "react-router-dom";
 
-const Heading = () => {
+const Heading = ({ path }) => {
     const { goBack } = useBack()
     const { current } = useCurrent()
 
@@ -11,9 +12,9 @@ const Heading = () => {
                 <Arrow size={50} className="stroke-1" />
             </button>
             <h3 className="text-3xl capitalize">{current}</h3>
-            <button className="">
+            <Link to={path} className={`${!path? 'collapse' : ''} `}>
                 <Plus size={45} className="stroke-1" />
-            </button>
+            </Link>
         </div>
      );
 }

@@ -3,7 +3,7 @@ import { Heading, Table, Row } from "."
 const LedgerHome = () => {
     return ( 
         <>
-            <Heading />
+            <Heading path="/ledger/new"/>
             <Table title="07/25/2023">
                 <Row subtitle="electricity" amount="232.00" />
                 <Row subtitle="electricity" amount="232.00" />

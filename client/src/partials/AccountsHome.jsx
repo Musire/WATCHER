@@ -3,7 +3,7 @@ import { Heading } from "./";
 const AccountsHome = () => {
     return ( 
         <>
-            <Heading />
+            <Heading path="/accounts/new"/>
         </>
      );
 }
