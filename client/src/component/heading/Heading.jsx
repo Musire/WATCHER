@@ -6,7 +6,7 @@ const Heading = () => {
     const { current } = useCurrent()
 
     return ( 
-        <div className="spaced">
+        <div className="spaced sticky top-0 left-0 py-4 bg-midnight/70 backdrop-blur-md ">
             <button className="" onClick={() => goBack()}> 
                 <Arrow size={50} className="stroke-1" />
             </button>
