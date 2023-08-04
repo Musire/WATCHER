@@ -1,4 +1,4 @@
-import { ProgressBar } from "./"
+import { ProgressBar } from "../util"
 
 const DetailBanner = () => {
     return ( 
