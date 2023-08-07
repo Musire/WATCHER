@@ -8,6 +8,6 @@ import Home from "./Home"
 import { Heading } from "../component/heading"
 import { Table, Row } from "../component/table"
 import { DetailBanner, LinkButton } from "../component/home"
-import { SubmitButton } from "../component/util"
+import { SubmitButton, Form, InputField } from "../component/util"
 
-export { LedgerHome, AccountsHome, DetailsHome, NewRecord, NewAccount, NewGoal, Home, Heading, Table, Row, DetailBanner, LinkButton, SubmitButton }
+export { LedgerHome, AccountsHome, DetailsHome, NewRecord, NewAccount, NewGoal, Home, Heading, Table, Row, DetailBanner, LinkButton, SubmitButton, Form, InputField}
