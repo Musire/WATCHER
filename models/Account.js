@@ -13,6 +13,10 @@ const AccountSchema = new Schema({
     currency: {
         type: String,
         required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     }
   });
 

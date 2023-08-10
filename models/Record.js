@@ -25,6 +25,10 @@ const RecordSchema = new Schema({
     date: {
         type: Date,
         required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
     }
   });
 
