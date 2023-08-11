@@ -28,6 +28,8 @@ module.exports.delete_document = async (req, res) => {
 
 module.exports.fetch_document = async (req, res) => {
     const doc = req.params.document
-    Schema = Helper.documentTypes[doc]
-    res.json(await MongooseMethods.fetchSortedRecords(Schema, req.body.userID))
+    const Schema = Helper.documentTypes[doc]
+    const user = req.query.user
+    console.log('fetched documents')
+    res.json(await MongooseMethods.fetchSortedRecords(Schema, user))
 }

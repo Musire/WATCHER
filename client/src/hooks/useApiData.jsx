@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const useApiData = (url) => {
+const useApiData = (method, url, baseURL, requestData = null) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -8,12 +9,15 @@ const useApiData = (url) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error('Network response was not ok.');
-        }
-        const data = await response.json();
-        setData(data);
+        const response = await axios.request({
+          method: method,
+          url: url,
+          baseURL: baseURL,
+          data: requestData,
+        });
+
+        console.log(response.data)
+        setData(response.data);
         setIsLoading(false);
       } catch (error) {
         setError(error);
@@ -22,7 +26,7 @@ const useApiData = (url) => {
     };
 
     fetchData();
-  }, [url]);
+  }, []);
 
   return { data, isLoading, error };
 };
