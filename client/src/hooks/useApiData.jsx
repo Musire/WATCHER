@@ -17,7 +17,7 @@ const useApiData = (requestData) => {
       setData(response.data);
       setIsLoading(false);
     } catch (error) {
-      setError(error);
+      setError("missing or invalid data");
       setIsLoading(false);
     }
   };

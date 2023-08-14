@@ -1,7 +1,6 @@
 import { useApiData } from "../hooks"
 import { Form, Heading, InputField } from "./"
 import { useForm } from "../hooks"
-import { useEffect } from "react"
 
 const NewRecord = () => {
 
@@ -32,7 +31,7 @@ const NewRecord = () => {
     return ( 
         <>
             <Heading />
-            <Form handleSubmit={useHandleSubmit}>
+            <Form handleSubmit={useHandleSubmit} error={error}>
                 <span className="flex gap-x-[10%]">
                     <InputField input="date" handleChange={handleInputChange}/>
                     <InputField input="account" handleChange={handleInputChange}/>
