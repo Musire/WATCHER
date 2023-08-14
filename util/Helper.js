@@ -2,7 +2,7 @@ const Record = require('../models/Record')
 const Goal = require('../models/Goal')
 const Account = require('../models/Account')
 
-module.exports.anyFieldEmpty = (dataObj) => {
+module.exports.anyFieldEmpty = async (dataObj) => {
     let dataArr = Object.values(dataObj)
     let isEmpty = dataArr.some(v => v === 0 || v === undefined || v === null || v === "")
     return isEmpty

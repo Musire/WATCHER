@@ -1,10 +1,12 @@
+import { SubmitButton } from "./";
 
 
-const Form = ({ handleSubmit, formID, formRef, children }) => {
+const Form = ({ handleSubmit, children }) => {
     
     return ( 
-        <form id={formID} ref={formRef} onSubmit={e => handleSubmit(e)} className="p-8 bg-shadow w-full rounded-lg flex flex-col gap-y-4">
+        <form onSubmit={e => handleSubmit(e)} className="flex flex-col w-full p-8 rounded-lg bg-shadow gap-y-4">
             { children }
+            <SubmitButton />
         </form>
      );
 }

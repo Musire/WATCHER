@@ -1,34 +1,28 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useApiData = (method, url, baseURL, requestData = null) => {
-  const [data, setData] = useState(null);
+const useApiData = (requestData) => {
+  const [data, setData] = useState("blank");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.request({
-          method: method,
-          url: url,
-          baseURL: baseURL,
-          data: requestData,
-        });
+  const fetchData = async (body=null) => {
+    try {
+      const response = await axios.request({
+        method: requestData.method,
+        url: requestData.url,
+        baseURL: requestData.baseurl,
+        data: body
+      });
+      setData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      setError(error);
+      setIsLoading(false);
+    }
+  };
 
-        console.log(response.data)
-        setData(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        setError(error);
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return { data, isLoading, error };
+  return { data, isLoading, error, fetchData };
 };
 
 export default useApiData;

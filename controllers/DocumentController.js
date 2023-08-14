@@ -1,19 +1,20 @@
+const { Error } = require('mongoose')
 const Helper = require('../util/Helper')
 const MongooseMethods = require('../util/MongooseMethods')
 
 module.exports.create_document = async (req, res) => {
-    
-    const anyEmpty = Helper.anyFieldEmpty(req.body)
+    const anyEmpty = await Helper.anyFieldEmpty(req.body)
 
     if (anyEmpty) {
-        console.log('error with req.body')
-        return res.json({err: 'error with empty fields'})
+        return res.status(400).json({msg: "missing or invalid data"})
+    } else {
+        const doc = req.params.document
+        Schema = Helper.documentTypes[doc]
+
+        MongooseMethods.saveNewRecord(Schema, req.body)
+        return res.status(200).json({msg: 'new record created'})
     }
-
-    const doc = req.params.document
-    Schema = Helper.documentTypes[doc]
-
-    MongooseMethods.saveNewRecord(Schema, req.body)
+    
 }
 
 module.exports.edit_document = async (req, res) => {

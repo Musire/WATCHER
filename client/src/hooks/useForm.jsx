@@ -8,12 +8,12 @@ const useForm = (initialValues, onSubmit) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const useHandleSubmit = async (event) => {
     event.preventDefault();
-    onSubmit(formData);
+    await onSubmit(formData)
   };
 
-  return { formData, handleInputChange, handleSubmit };
+  return { formData, handleInputChange, useHandleSubmit };
 };
 
 export default useForm;

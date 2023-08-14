@@ -13,7 +13,7 @@ Content-Type: application/json
     "category": "household",
     "area": "groceries",
     "date": "08/05/2023", 
-    "user": "64d3d7e48f3aee818fc95876"
+    "user": "64da703566eec4e5572af1de"
 }
 
 ### submit new account to the Database
@@ -25,7 +25,7 @@ Content-Type: application/json
     "account": "WellsFargo",
     "currency": "USD",
     "amount": "30.00",
-    "user": "64d3d7e48f3aee818fc95876"
+    "user": "64da703566eec4e5572af1de"
 }
 
 ### submit new goal to the Database
@@ -37,7 +37,7 @@ Content-Type: application/json
     "category": "household",
     "area": "groceries",
     "amount": "9000",
-    "user": "64d3d7e48f3aee818fc95876"
+    "user": "64da703566eec4e5572af1de"
 }
 
 ### --------------FETCHING TESTS-------------- ###
@@ -48,7 +48,7 @@ GET http://localhost:5273/api/fetch/record
 Content-Type: application/json
 
 {
-    "userID": "64d3d7e48f3aee818fc95876"
+    "userID": "64da703566eec4e5572af1de"
 }
 
 ### fetch account documents sorted by date
@@ -57,7 +57,7 @@ GET http://localhost:5273/api/fetch/account
 Content-Type: application/json
 
 {
-    "userID": "64d3d7e48f3aee818fc95876"
+    "userID": "64da703566eec4e5572af1de"
 }
 
 ### fetch goal documents sorted by date
@@ -66,7 +66,7 @@ GET http://localhost:5273/api/fetch/goal
 Content-Type: application/json
 
 {
-    "userID": "64d3d7e48f3aee818fc95876"
+    "userID": "64da703566eec4e5572af1de"
 }
 
 ### --------------DELETION TESTS-------------- ###
@@ -78,5 +78,5 @@ DELETE http://localhost:5273/api/delete/record
 Content-Type: application/json
 
 {
-    "recordID": "64d41ab8679ac5d31f2ca0ae"
+    "recordID": "64da703566eec4e5572af1de"
 }

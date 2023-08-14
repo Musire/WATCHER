@@ -1,16 +1,15 @@
-import { useRef } from "react"
-import { useExternalForm } from "../hooks"
-import { SubmitButton, Form, Heading, InputField } from "./"
+import { useApiData } from "../hooks"
+import { Form, Heading, InputField } from "./"
 import { useForm } from "../hooks"
+import { useEffect } from "react"
 
 const NewRecord = () => {
-    const formID = 'newRecord'
-    const formRef = useRef(null)
-    const handleExternalForm = useExternalForm(formRef)
 
-    const onSubmit = (data) => {
-        console.log(data);
-    };
+    const submitData = {
+        method: 'POST',
+        url: '/api/create/record',
+        baseurl: 'http://localhost:5273'
+    }
 
     const initialValues = {
         date: '',
@@ -19,14 +18,21 @@ const NewRecord = () => {
         amount: '',
         category: '',
         area: '',
+        user: '64da703566eec4e5572af1de'
       };
 
-    const { handleInputChange, handleSubmit } = useForm(initialValues, onSubmit)
+    const { data, error, fetchData } = useApiData(submitData)
+
+    const onSubmit = async (formData) => {
+        await fetchData(formData)
+    }
+
+    const { handleInputChange, useHandleSubmit } = useForm(initialValues, onSubmit)
 
     return ( 
         <>
             <Heading />
-            <Form formID={formID} formRef={formRef} handleSubmit={handleSubmit}>
+            <Form handleSubmit={useHandleSubmit}>
                 <span className="flex gap-x-[10%]">
                     <InputField input="date" handleChange={handleInputChange}/>
                     <InputField input="account" handleChange={handleInputChange}/>
@@ -40,7 +46,6 @@ const NewRecord = () => {
                     <InputField input="area" handleChange={handleInputChange}/>
                 </span>
             </Form>
-            <SubmitButton formID={formID} handleClick={handleExternalForm}/>
         </>
      );
 }
