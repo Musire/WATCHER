@@ -1,10 +1,20 @@
 import { Heading, Row } from "."
 import { useApiData } from "../hooks";
+import { useEffect } from "react"
 
 const DetailsHome = () => {
-    const baseURL = "http://localhost:5273"
-    const endpoint = '/api/fetch/goal?user=64d3d7e48f3aee818fc95876'
-    const { data, isLoading, error } = useApiData('GET', endpoint, baseURL)
+    const requestData = {
+        method: "GET",
+        baseurl: "http://localhost:5273",
+        url: '/api/fetch/goal?user=64da703566eec4e5572af1de',
+        body: {}
+    }
+
+    const { data, isLoading, error, fetchData } = useApiData(requestData)
+
+    useEffect(() => {
+        fetchData()
+    }, [])
 
     return ( 
         <>
