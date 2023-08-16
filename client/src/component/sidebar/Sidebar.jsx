@@ -2,12 +2,12 @@ import { HiOutlineChartBar as Chart, HiOutlineHome as Home } from "react-icons/h
 
 const Sidebar = () => {
     return ( 
-        <aside className="w-screen h-28 bg-midnight text-silver fixed bottom-0 left-0 px-8 py-4 centered">
+        <aside className="fixed bottom-0 left-0 w-screen px-8 py-4 h-28 bg-midnight text-silver centered">
             <div className="w-full h-full spaced">
-                <div className="h-16 w-16 bg-gradient-to-br from-lightblue to-darkblue rounded-full"></div>
-                <span className="spaced w-1/3">
-                    <button className="p-3 bg-silver rounded-2xl">
-                        <Home className="stroke-1 text-midnight" size={40}/>
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-lightblue to-darkblue"></div>
+                <span className="w-1/3 spaced">
+                    <button className="p-3 bg-shadow rounded-2xl">
+                        <Home className="stroke-1 text-silver" size={40}/>
                     </button>
                     <button className="">
                         <Chart className="stroke-1" size={40}/>

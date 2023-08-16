@@ -1,4 +1,4 @@
-import { Heading, Row } from "."
+import { Heading, Row, Table } from "."
 import { useApiData } from "../hooks";
 import { useEffect } from "react"
 
@@ -19,7 +19,10 @@ const AccountsHome = () => {
     return ( 
         <>
             <Heading path="/accounts/new"/>
-            {!isLoading && data.map(item => <Row key={item._id} subtitle={item.account} amount={item.amount} />)}
+            <Table>
+                {!isLoading && data.map(item => <Row key={item._id} subtitle={item.account} amount={item.amount} />)}
+            </Table>
+            
         </>
      );
 }
