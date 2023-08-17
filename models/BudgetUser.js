@@ -17,7 +17,22 @@ const UserSchema = new Schema({
     date: {
       type: Date,
       default: Date.now
+    },
+    income: {
+      type: Number
+    },
+    expenses: {
+      type: Number
+    },
+    transfers: {
+      type: Number
     }
   });
+
+
+UserSchema.virtual('total').get(function () {
+  return (this.income - (this.expenses + this.transfers))
+});
+
 
 module.exports = BudgetUser = mongoose.model("BudgetUser", UserSchema)

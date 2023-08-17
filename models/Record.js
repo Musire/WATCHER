@@ -1,5 +1,8 @@
+const recordMiddleware = require('./middleware/recordMiddleware')
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
 
 const RecordSchema = new Schema({
     account: {
@@ -31,5 +34,7 @@ const RecordSchema = new Schema({
         required: true
     }
   });
+
+recordMiddleware(RecordSchema)
 
 module.exports = Record = mongoose.model("Record", RecordSchema)

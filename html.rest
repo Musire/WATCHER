@@ -8,8 +8,8 @@ Content-Type: application/json
 
 {
     "account": "WellsFargo",
-    "type": "expense",
-    "amount": "30.00",
+    "type": "income",
+    "amount": "1.50",
     "category": "household",
     "area": "groceries",
     "date": "08/05/2023", 
@@ -41,6 +41,9 @@ Content-Type: application/json
 }
 
 ### --------------FETCHING TESTS-------------- ###
+### fetch current value of money
+
+GET http://localhost:5273/api/current?user=64da703566eec4e5572af1de
 
 ### fetch record documents sorted by date
 

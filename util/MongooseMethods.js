@@ -1,7 +1,7 @@
 
 module.exports.saveNewRecord = async (Schema, data) => {
     const newRecord = new Schema(data)
-    newRecord.save()
+    await newRecord.save()
         .then(console.log('saved new document'))
         .catch(err => console.log(err))
 }
@@ -15,5 +15,5 @@ module.exports.deleteRecord = async (Schema, targetID) => {
 }
 
 module.exports.fetchSortedRecords = async (Schema, targetID) => {
-    return await Schema.find({user: targetID}).sort({ date: 1 })
+    return await Schema.find({user: targetID}).sort({ date: 1 }) 
 }
