@@ -2,7 +2,7 @@ import { Heading, Row, Table } from "."
 import { useApiData } from "../hooks";
 import { useEffect } from "react"
 
-const DetailsHome = () => {
+const GoalsHome = () => {
     const requestData = {
         method: "GET",
         baseurl: "http://localhost:5273",
@@ -18,7 +18,7 @@ const DetailsHome = () => {
 
     return ( 
         <>
-            <Heading path="/details/new"/>
+            <Heading path="/goals/new"/>
             <Table>
                 {!isLoading && data.map(item => <Row key={item._id} subtitle={item.category} amount={item.amount} />)}
             </Table>
@@ -26,4 +26,4 @@ const DetailsHome = () => {
      );
 }
  
-export default DetailsHome;
+export default GoalsHome;

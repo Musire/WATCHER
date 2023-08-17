@@ -7,7 +7,7 @@ const Home = () => {
             <div className="spaced">
                 <LinkButton variant="ledger"/>
                 <LinkButton variant="accounts"/>
-                <LinkButton variant="details"/>
+                <LinkButton variant="goals"/>
             </div>
         </>
      );
