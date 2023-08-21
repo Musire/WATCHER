@@ -83,3 +83,27 @@ Content-Type: application/json
 {
     "recordID": "64da703566eec4e5572af1de"
 }
+
+
+### Login User
+POST http://localhost:5273/api/login
+Content-Type: application/json
+
+{
+    "username": "musire",
+    "password": "123"
+}
+
+
+###
+
+
+
+POST http://localhost:5273/api/register_user
+Content-Type: application/json
+
+{
+    "username": "musire",
+    "email": "mcmusire@gmail.com",
+    "password": "password"
+}

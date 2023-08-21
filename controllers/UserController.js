@@ -1,24 +1,72 @@
-const { default: mongoose } = require('mongoose')
 const BudgetUser = require('../models/BudgetUser')
-const ValidationController = require('./ValidationController')
-
+const Helper = require('../util/Helper')
+const bcrypt = require('bcryptjs')
+const jwt = require("jsonwebtoken");
 
 module.exports.register_user = async (req, res) => {
-    const anyEmpty = ValidationController.anyFieldEmpty(req.body)
+    const anyEmpty = await Helper.anyFieldEmpty(req.body)
 
     if (anyEmpty) {
         console.log('error with req.body')
         return res.json({err: 'error with empty fields'})
     }
 
-    const newUser = new BudgetUser(req.body)
+    const newUser = new BudgetUser({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email
 
-    newUser.save()
-        .then(console.log('saved new user'))
-        .catch(err => console.log(err))
+    })
+
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
+        });
+      });
+
+    
 }
 
 module.exports.login_user = async (req, res) => {
+    const anyEmpty = await Helper.anyFieldEmpty(req.body)
+
+    if (anyEmpty) {
+        console.log('error with req.body')
+        return res.json({err: 'error with empty fields'})
+    }
+
+    let { username, password } = req.body
+
+    try {
+        const user = await BudgetUser.find({username: username})
+
+        if (!user.length) {
+            console.log('user not found')
+            return res.status(208).json({msg: 'user not found'})
+        }
+
+        bcrypt.compare(password, user[0].password).then(isMatch => {
+            if (isMatch) {
+                const payload = { id: user._id, name: user.username }
+
+                jwt.sign(payload, secretKey, { expiresIn: 31556926 }, (err, token) => {
+                    res.json({user: user, token: "Bearer " + token})
+                }) 
+            } else {
+                return res.status(400).json({msg: "password incorrect"})
+            }
+        })
+
+    } catch (error) {
+        console.error('Error:', error);
+        return res.status(400)
+    }
+
 
 }
 

@@ -17,7 +17,22 @@ const AccountSchema = new Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
+    },
+    income: {
+        type: Number
+    },
+    expenses: {
+        type: Number
+    },
+    transfers: {
+        type: Number
     }
   });
+
+
+AccountSchema.virtual('total').get(function () {
+    return (this.income - (this.expenses + this.transfers))
+});
+  
 
 module.exports = Account = mongoose.model("Account", AccountSchema)

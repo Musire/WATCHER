@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const documentRoute = require('./routes/api/documents')
+const userRoute = require('./routes/api/users')
 
 // instantiate express server as app
 const express = require('express')
@@ -30,6 +31,7 @@ mongoose.connect(db, { useNewUrlParser: true })
 
 
 app.use('/api', documentRoute)
+app.use('/api', userRoute)
 
 const port = process.env.PORT || 5000
 app.listen(port, () => {

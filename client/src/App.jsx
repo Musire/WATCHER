@@ -1,4 +1,4 @@
-import { Main  } from "./pages"
+import { Main, Login } from "./pages"
 import { LedgerHome, AccountsHome, GoalsHome, Home, NewRecord, NewAccount, NewGoal } from "./partials"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
@@ -9,6 +9,7 @@ export default function App() {
         <Route path="/" element={<Main />} >
           <Route path="" element={<Home />} />
         </Route>
+        <Route path="/login" element={ <Login /> } />
         <Route path="/ledger" element={<Main />} >
           <Route path="" element={<LedgerHome />} />
           <Route path="new" element={<NewRecord />} />

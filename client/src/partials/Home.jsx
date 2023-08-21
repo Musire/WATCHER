@@ -1,4 +1,5 @@
 import { DetailBanner, LinkButton } from "./";
+import { withAuth } from "../HOC";
 
 const Home = () => {
     return ( 
@@ -12,5 +13,7 @@ const Home = () => {
         </>
      );
 }
- 
-export default Home;
+
+const AuthorizedComponent = withAuth(Home)
+
+export default AuthorizedComponent;
