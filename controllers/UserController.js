@@ -11,25 +11,30 @@ module.exports.register_user = async (req, res) => {
         return res.json({err: 'error with empty fields'})
     }
 
-    const newUser = new BudgetUser({
-        username: req.body.username,
-        password: req.body.password,
-        email: req.body.email
+    try {
+        const user = await BudgetUser.findOne({username: req.body.username})
 
-    })
+        if (user) {
+            console.log("user already created")
+            return res.status(208).json({msg: "user already created"})
+        }
 
-    bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err;
-          newUser.password = hash;
-          newUser
-            .save()
-            .then(user => res.json(user))
-            .catch(err => console.log(err));
-        });
-      });
+        let { username, password, email } = req.body
+        const newUser = new BudgetUser({ username, password, email })
 
-    
+        bcrypt.genSalt(10)
+            .then(salt => bcrypt.hash(newUser.password, salt))
+            .then(hash => {
+                newUser.password = hash;
+                newUser.save().then(user => res.json(user))
+            })
+            .catch(err => {throw err})
+
+        const salt = await bcrypt.genSalt(10)
+
+    } catch (error) {
+        throw error
+    }
 }
 
 module.exports.login_user = async (req, res) => {
@@ -37,31 +42,30 @@ module.exports.login_user = async (req, res) => {
 
     if (anyEmpty) {
         console.log('error with req.body')
-        return res.json({err: 'error with empty fields'})
+        return res.status(208).json({err: 'error with empty fields'})
     }
 
-    let { username, password } = req.body
-
     try {
-        const user = await BudgetUser.find({username: username})
+        let { username, password } = req.body
+        const user = await BudgetUser.findOne({username: username})
 
-        if (!user.length) {
+        if (!user) {
             console.log('user not found')
-            return res.status(208).json({msg: 'user not found'})
+            return res.status(208).json({err: 'user not found'})
         }
 
-        bcrypt.compare(password, user[0].password).then(isMatch => {
-            if (isMatch) {
-                const payload = { id: user._id, name: user.username }
+        let isMatch = await bcrypt.compare(password, user.password)
 
-                jwt.sign(payload, secretKey, { expiresIn: 31556926 }, (err, token) => {
-                    res.json({user: user, token: "Bearer " + token})
-                }) 
-            } else {
-                return res.status(400).json({msg: "password incorrect"})
-            }
-        })
+        if (isMatch) {
+            const payload = { id: user._id, name: user.username }
 
+            jwt.sign(payload, process.env.JWTSECRET, { expiresIn: 31556926 }, (err, token) => {
+                return res.json({user: user, token: "Bearer " + token})
+            }) 
+        } else {
+            console.log("password incorrect")
+            return res.status(208).json({err: "password incorrect"})
+        }
     } catch (error) {
         console.error('Error:', error);
         return res.status(400)

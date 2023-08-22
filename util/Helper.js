@@ -5,8 +5,7 @@ const User = require('../models/BudgetUser')
 
 module.exports.anyFieldEmpty = async (dataObj) => {
     let dataArr = Object.values(dataObj)
-    let isEmpty = dataArr.some(v => v === 0 || v === undefined || v === null || v === "")
-    return isEmpty
+    return dataArr.some(item => !item)
 }
 
 module.exports.documentTypes = {

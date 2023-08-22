@@ -14,10 +14,14 @@ const useApiData = (requestData) => {
         baseURL: requestData.baseurl,
         data: body
       });
-      setData(response.data);
+      if (response.status === 208) {
+        setError(response.data.err)
+      } else {
+        setData(response.data);
+      }
       setIsLoading(false);
     } catch (error) {
-      setError("missing or invalid data");
+      setError("error with your request");
       setIsLoading(false);
     }
   };
