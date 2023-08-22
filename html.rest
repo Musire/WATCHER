@@ -90,20 +90,17 @@ POST http://localhost:5273/api/login
 Content-Type: application/json
 
 {
-    "username": "musire",
-    "password": "123"
+    "username": "joey",
+    "password": "f"
 }
 
 
-###
-
-
-
+### Register User
 POST http://localhost:5273/api/register_user
 Content-Type: application/json
 
 {
-    "username": "musire",
-    "email": "mcmusire@gmail.com",
-    "password": "password"
+    "username": "joey",
+    "email": "god@gmail.com",
+    "password": "f"
 }
