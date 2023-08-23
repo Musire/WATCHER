@@ -1,3 +1,5 @@
+const accountMiddleware = require('./middleware/accountMiddleware')
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -6,7 +8,7 @@ const AccountSchema = new Schema({
         type: String,
         required: true
     },
-    amount: {
+    startingAmount: {
         type: Number,
         required: true
     },
@@ -19,13 +21,16 @@ const AccountSchema = new Schema({
         required: true
     },
     income: {
-        type: Number
+        type: Number,
+        default: 0
     },
     expenses: {
-        type: Number
+        type: Number,
+        default: 0
     },
     transfers: {
-        type: Number
+        type: Number,
+        default: 0
     }
   });
 
@@ -33,6 +38,10 @@ const AccountSchema = new Schema({
 AccountSchema.virtual('total').get(function () {
     return (this.income - (this.expenses + this.transfers))
 });
-  
+
+AccountSchema.set('toObject', { virtuals: true });
+AccountSchema.set('toJSON', { virtuals: true });
+
+accountMiddleware(AccountSchema)
 
 module.exports = Account = mongoose.model("Account", AccountSchema)

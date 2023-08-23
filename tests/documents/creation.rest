@@ -6,13 +6,13 @@ POST http://localhost:5273/api/create/record
 Content-Type: application/json
 
 {
-    "account": "WellsFargo",
+    "account": "CitiBanamex",
     "type": "income",
-    "amount": "1.50",
+    "amount": "12500",
     "category": "household",
-    "area": "groceries",
+    "area": "payment",
     "date": "08/05/2023", 
-    "user": "64da703566eec4e5572af1de"
+    "user": "64e6697d84508dbcbcd73ced"
 }
 
 ### submit new account to the Database
@@ -21,10 +21,10 @@ POST http://localhost:5273/api/create/account
 Content-Type: application/json
 
 {
-    "account": "WellsFargo",
-    "currency": "USD",
-    "amount": "30.00",
-    "user": "64da703566eec4e5572af1de"
+    "account": "CitiBanamex",
+    "currency": "MXN",
+    "startingAmount": "30.00",
+    "user": "64e6697d84508dbcbcd73ced"
 }
 
 ### submit new goal to the Database

@@ -1,24 +1,19 @@
-const Helper = require('../../util/Helper')
-
-const { default: mongoose } = require('mongoose');
-const userSchema = require('../BudgetUser')
-const recordSchema = require('../Record')
+const accountSchema = require('../Account')
 
 module.exports = function(Schema) {
   
     Schema.post('save', async function(doc, next) {
       const userId = this.user.toString()
+      const accountName = this.account.toString()
+      const recordType = this.type.toString()
 
-      const user = await userSchema.findById(userId)
-      const records = await mongoose.model('Record').find({user: userId}).select(['account', 'amount', 'type'])
+      let accountDoc = await accountSchema.findOne({
+        user: userId,
+        account: accountName
+      })
 
-      const { expenses, income, transfers } = Helper.deconstructArray(records)
-
-      user.income = income
-      user.expenses = expenses
-      user.transfers = transfers
-
-      user.save()
+      accountDoc[recordType] += this.amount
+      accountDoc.save()
 
       next();
     });
