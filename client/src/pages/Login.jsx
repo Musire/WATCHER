@@ -24,8 +24,6 @@ const Login = () => {
             localStorage.setItem('token', data.token)
             navigate('/')
         }
-
-        console.log(data)
     }
 
     const { handleInputChange, useHandleSubmit } = useForm(initialValue, onSubmit)

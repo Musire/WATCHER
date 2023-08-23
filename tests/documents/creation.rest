@@ -1,0 +1,40 @@
+### --------------CREATION TESTS-------------- ###
+
+### submit new record to the Database
+
+POST http://localhost:5273/api/create/record
+Content-Type: application/json
+
+{
+    "account": "WellsFargo",
+    "type": "income",
+    "amount": "1.50",
+    "category": "household",
+    "area": "groceries",
+    "date": "08/05/2023", 
+    "user": "64da703566eec4e5572af1de"
+}
+
+### submit new account to the Database
+
+POST http://localhost:5273/api/create/account
+Content-Type: application/json
+
+{
+    "account": "WellsFargo",
+    "currency": "USD",
+    "amount": "30.00",
+    "user": "64da703566eec4e5572af1de"
+}
+
+### submit new goal to the Database
+
+POST http://localhost:5273/api/create/goal
+Content-Type: application/json
+
+{
+    "category": "household",
+    "area": "groceries",
+    "amount": "9000",
+    "user": "64da703566eec4e5572af1de"
+}

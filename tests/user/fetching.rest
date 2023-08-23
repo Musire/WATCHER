@@ -1,0 +1,10 @@
+### --------------FETCHING TESTS-------------- ###
+
+### Login User
+POST http://localhost:5273/api/login
+Content-Type: application/json
+
+{
+    "username": "joey",
+    "password": "f"
+}

@@ -1,0 +1,11 @@
+### --------------DELETION TESTS-------------- ###
+
+
+### delete record document
+
+DELETE http://localhost:5273/api/delete/record
+Content-Type: application/json
+
+{
+    "recordID": "64da703566eec4e5572af1de"
+}

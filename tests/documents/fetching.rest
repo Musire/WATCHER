@@ -1,0 +1,31 @@
+### --------------FETCHING TESTS-------------- ###
+### fetch current value of money
+
+GET http://localhost:5273/api/current?user=64da703566eec4e5572af1de
+
+### fetch record documents sorted by date
+
+GET http://localhost:5273/api/fetch/record
+Content-Type: application/json
+
+{
+    "userID": "64da703566eec4e5572af1de"
+}
+
+### fetch account documents sorted by date
+
+GET http://localhost:5273/api/fetch/account
+Content-Type: application/json
+
+{
+    "userID": "64da703566eec4e5572af1de"
+}
+
+### fetch goal documents sorted by date
+
+GET http://localhost:5273/api/fetch/goal
+Content-Type: application/json
+
+{
+    "userID": "64da703566eec4e5572af1de"
+}

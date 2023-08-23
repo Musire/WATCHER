@@ -1,0 +1,11 @@
+### --------------CREATION TESTS-------------- ###
+
+### Register User
+POST http://localhost:5273/api/register_user
+Content-Type: application/json
+
+{
+    "username": "joey",
+    "email": "god@gmail.com",
+    "password": "f"
+}

@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Canvas, Sidebar } from "."
+import { withAuth } from "../HOC";
 
 const Main = () => {
     return ( 
@@ -9,5 +10,7 @@ const Main = () => {
         </Canvas>
      );
 }
- 
-export default Main;
+
+const AuthorizedComponent = withAuth(Main)
+
+export default AuthorizedComponent;
