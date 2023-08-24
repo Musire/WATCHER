@@ -8,3 +8,12 @@ Content-Type: application/json
     "username": "joey",
     "password": "f"
 }
+
+### checking for total
+
+GET http://localhost:5273/api
+Content-Type: application/json
+
+{
+    "id": "64e78de2ae79f59d64281db1"
+}

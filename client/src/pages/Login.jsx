@@ -1,9 +1,11 @@
 import { Canvas } from "./"
 import { useForm, useApiData } from "../hooks"
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from "../context/AuthContext"
 
 const Login = () => {
     const navigate = useNavigate();
+    const { setAuth } = useAuth()
 
     const submitData = {
         method: "POST",
@@ -22,6 +24,7 @@ const Login = () => {
         await fetchData(formData)
         if (data) {
             localStorage.setItem('token', data.token)
+            setAuth(data.user)
             navigate('/')
         }
     }

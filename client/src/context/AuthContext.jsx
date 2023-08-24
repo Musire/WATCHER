@@ -7,20 +7,18 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(null);
 
   const token = localStorage.getItem('token')
-
-  const isAuthenticated = () => !!token;
+  const isAuth = () => !!token
 
   useEffect(() => {
-    if (isAuthenticated()) {
+    if (isAuth()) {
       const decodedToken = jwt_decode(token)
-      let { id, name } = decodedToken
-
-      setAuth({ id, name })
-    } 
+      setAuth(decodedToken)
+    }
   }, [])
 
+
   return (
-    <AuthContext.Provider value={{ auth, setAuth, isAuthenticated }}>
+    <AuthContext.Provider value={{ auth, setAuth, isAuth }}>
       {children}
     </AuthContext.Provider>
   );

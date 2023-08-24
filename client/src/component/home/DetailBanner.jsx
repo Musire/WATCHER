@@ -1,18 +1,22 @@
 import { ProgressBar } from "../util"
 import { useApiData } from "../../hooks"
 import { useEffect } from "react"
+import { useAuth } from "../../context/AuthContext"
 
 const DetailBanner = () => {
+
+    const { auth } = useAuth()
+    console.log(auth)
+    
     const submitData = {
         method: "GET",
-        url: "/api/current?user=64da703566eec4e5572af1de",
-        baseurl: "http://localhost:5273", 
-        body: ""
+        url: `/api/`,
+        baseurl: "http://localhost:5273"
     }
     const {data, error, isLoading, fetchData } = useApiData(submitData)
 
     useEffect(() => {
-        fetchData()
+        fetchData({id: auth ? auth.id : ''})
     }, [])
 
     const formatter = new Intl.NumberFormat('en-US', {

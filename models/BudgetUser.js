@@ -1,3 +1,5 @@
+const userMiddleware = require('./middleware/userMiddleware')
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
@@ -14,6 +16,10 @@ const UserSchema = new Schema({
       type: String,
       required: true
     },
+    accounts: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'accounts'
+    }],
     date: {
       type: Date,
       default: Date.now
@@ -38,5 +44,7 @@ UserSchema.virtual('total').get(function () {
 
 UserSchema.set('toObject', { virtuals: true });
 UserSchema.set('toJSON', { virtuals: true });
+
+userMiddleware(UserSchema)
 
 module.exports = BudgetUser = mongoose.model("BudgetUser", UserSchema)

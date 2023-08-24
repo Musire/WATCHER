@@ -80,9 +80,9 @@ module.exports.fetch_user = async (req, res) => {
 }
 
 module.exports.fetch_current = async (req, res) => {
-    const targetId = req.query.user // pull targetId from the query in the request object
-    let user = await BudgetUser.find({_id: targetId}).select(['income', 'transfers', 'expenses']) // async user request
-    user = user[0] // set the user to the first in the user list returned
-    let grandTotal = (user.income - (user.expenses + user.transfers)) // sum of the income and expenses + transfers
-    res.json({total: grandTotal})
+    const targetId = req.body.id
+    console.log(targetId)
+    let user = await BudgetUser.findOne({_id: targetId}) 
+    console.log(user)
+    res.json({total: user.total})
 }

@@ -12,7 +12,7 @@ Content-Type: application/json
     "category": "household",
     "area": "payment",
     "date": "08/05/2023", 
-    "user": "64e6697d84508dbcbcd73ced"
+    "user": "64e7bbcb34238379b17ea295"
 }
 
 ### submit new account to the Database
@@ -24,7 +24,7 @@ Content-Type: application/json
     "account": "CitiBanamex",
     "currency": "MXN",
     "startingAmount": "30.00",
-    "user": "64e6697d84508dbcbcd73ced"
+    "user": "64e7bbcb34238379b17ea295"
 }
 
 ### submit new goal to the Database
