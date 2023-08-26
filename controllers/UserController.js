@@ -80,9 +80,8 @@ module.exports.fetch_user = async (req, res) => {
 }
 
 module.exports.fetch_current = async (req, res) => {
-    const targetId = req.body.id
-    console.log(targetId)
+    let targetId = req.body.id
     let user = await BudgetUser.findOne({_id: targetId}) 
-    console.log(user)
+    console.log('current total pinged')
     res.json({total: user.total})
 }

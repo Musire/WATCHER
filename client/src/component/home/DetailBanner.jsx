@@ -1,23 +1,10 @@
 import { ProgressBar } from "../util"
-import { useApiData } from "../../hooks"
-import { useEffect } from "react"
-import { useAuth } from "../../context/AuthContext"
+import { fetchCurrentTotal as submitData } from "../../constant/requestText"
+import { useFetchContext } from "../../hooks"
 
 const DetailBanner = () => {
 
-    const { auth } = useAuth()
-    console.log(auth)
-    
-    const submitData = {
-        method: "GET",
-        url: `/api/`,
-        baseurl: "http://localhost:5273"
-    }
-    const {data, error, isLoading, fetchData } = useApiData(submitData)
-
-    useEffect(() => {
-        fetchData({id: auth ? auth.id : ''})
-    }, [])
+    const { data, isLoading, Error } = useFetchContext(submitData)    
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -32,6 +19,7 @@ const DetailBanner = () => {
         <div className="p-8 mt-8 bg-shadow rounded-3xl centered-col gap-y-6">
             <article className="centered-col gap-y-2">
                 <h3 className="text-xl">Current Balance</h3>
+                {isLoading && <h2 className="w-full h-8 text-3xl bg-silver/30"></h2>}
                 {!isLoading && <h2 className="text-3xl">{current}</h2>}
             </article>
             <ProgressBar />

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 const useApiData = (requestData) => {
@@ -12,6 +12,7 @@ const useApiData = (requestData) => {
         method: requestData.method,
         url: requestData.url,
         baseURL: requestData.baseurl,
+        headers: { 'Content-Type': 'application/json' },
         data: body
       });
       if (response.status === 208) {
