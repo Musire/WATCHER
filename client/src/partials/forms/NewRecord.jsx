@@ -1,32 +1,14 @@
-import { useApiData } from "../hooks"
-import { Form, Heading, InputField } from "./"
-import { useForm } from "../hooks"
+import { Form, Heading, InputField, useForm, useApiData, useAuth, initialRecordData, createRecordData} from "./"
 
 const NewRecord = () => {
-
-    const submitData = {
-        method: 'POST',
-        url: '/api/create/record',
-        baseurl: 'http://localhost:5273'
-    }
-
-    const initialValues = {
-        date: '',
-        account: '',
-        type: '',
-        amount: '',
-        category: '',
-        area: '',
-        user: '64da703566eec4e5572af1de'
-      };
-
-    const { data, error, fetchData } = useApiData(submitData)
+    const { auth } = useAuth()
+    const { data, error, fetchData } = useApiData(createRecordData)
 
     const onSubmit = async (formData) => {
-        await fetchData(formData)
+        await fetchData({...formData, ["user"]: auth.id})
     }
 
-    const { handleInputChange, useHandleSubmit } = useForm(initialValues, onSubmit)
+    const { handleInputChange, useHandleSubmit } = useForm(initialRecordData, onSubmit)
 
     return ( 
         <>

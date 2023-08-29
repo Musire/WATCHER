@@ -16,6 +16,8 @@ module.exports.create_document = async (req, res) => {
         return res.status(400).json({msg: "missing or invalid data"})
     }
 
+    console.log(req.body)
+
     const doc = req.params.document
     Schema = Helper.documentTypes[doc]
 

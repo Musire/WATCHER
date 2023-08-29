@@ -36,7 +36,7 @@ const AccountSchema = new Schema({
 
 
 AccountSchema.virtual('total').get(function () {
-    return (this.income - (this.expenses + this.transfers))
+    return (this.income - (this.expenses + this.transfers) + this.startingAmount)
 });
 
 AccountSchema.set('toObject', { virtuals: true });

@@ -1,7 +1,4 @@
-import { useApiData, useForm } from "../hooks"
-import { Form, Heading, InputField } from "./"
-import { useAuth } from "../context/AuthContext"
-import { createGoalData, initialGoalData } from "../constant/requestText"
+import { useApiData, useForm, Form, Heading, InputField, useAuth, createGoalData, initialGoalData } from "./"
 
 const NewGoal = () => {
     const { auth } = useAuth()

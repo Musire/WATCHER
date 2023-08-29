@@ -8,7 +8,6 @@ const Row = ({ transaction, dataType }) => {
 
     const config = typeConfig[dataType]
 
-
     return (
         <>
             {!config ? null : <span className="flex items-center self-end w-full p-4 gap-x-8 hover:bg-shadow ">

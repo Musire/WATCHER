@@ -1,6 +1,4 @@
-import { Heading, Table } from "."
-import { useFetchContext } from "../hooks";
-import { fetchLedgerData } from "../constant/requestText"
+import { Heading, Table, useFetchContext, fetchLedgerData } from "./"
 
 const LedgerHome = () => {
 

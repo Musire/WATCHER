@@ -1,9 +1,9 @@
-import LedgerHome from "./LedgerHome";
-import AccountsHome from "./AccountsHome"
-import GoalsHome from "./GoalsHome"
-import NewRecord from "./NewRecord";
-import NewAccount from "./NewAccount"
-import NewGoal from "./NewGoal"
+import LedgerHome from "./homepages/LedgerHome";
+import AccountsHome from "./homepages/AccountsHome"
+import GoalsHome from "./homepages/GoalsHome"
+import NewRecord from "./forms/NewRecord";
+import NewAccount from "./forms/NewAccount"
+import NewGoal from "./forms/NewGoal"
 import Home from "./Home"
 import { Heading } from "../component/heading"
 import { Table, Row } from "../component/table"

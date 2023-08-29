@@ -34,3 +34,31 @@ export const initialGoalData = {
     area: '',
     amount: '',
 };
+
+export const createRecordData = {
+    method: 'POST',
+    url: '/api/create/record',
+    baseurl: 'http://localhost:5273'
+}
+
+export const initialRecordData = {
+    date: '',
+    account: '',
+    type: '',
+    amount: '',
+    category: '',
+    area: ''
+};
+
+
+export const createAccountData = {
+    method: 'POST',
+    url: '/api/create/account',
+    baseurl: 'http://localhost:5273'
+}
+
+export const initialAccountData = {
+    account: '',
+    startingAmount: '',
+    currency: ''
+};

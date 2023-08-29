@@ -1,6 +1,4 @@
-import { Heading, Row } from "."
-import { useFetchContext } from "../hooks";
-import { fetchAccountData } from "../constant/requestText"
+import { Heading, Row, useFetchContext, fetchAccountData } from "./"
 
 const AccountsHome = () => {
 
