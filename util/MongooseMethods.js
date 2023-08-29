@@ -1,19 +1,28 @@
 
 module.exports.saveNewRecord = async (Schema, data) => {
-    const newRecord = new Schema(data)
-    await newRecord.save()
-        .then(console.log('saved new document'))
-        .catch(err => console.log(err))
+    try {
+        const newRecord = new Schema(data)
+        await newRecord.save()
+        console.log('saved new document')
+    } catch (error) {
+        console.log('Error', error)
+    }
 }
 
 module.exports.deleteRecord = async (Schema, targetID) => {
-    await Schema.findOneAndDelete({_id: targetID})
-        .then(console.log('error successfull'))
-        .catch(err => {
-            if (err) { console.log(err)}
-        })
+    try {
+        await Schema.findOneAndDelete({_id: targetID})
+        console.log('error successfull')
+    } catch (error) {
+        console.log('Error', error)
+    }
 }
 
 module.exports.fetchSortedRecords = async (Schema, targetID) => {
-    return await Schema.find({user: targetID}).sort({ date: 1 }) 
+    try {
+        return await Schema.find({user: targetID}).sort({ date: 1 })
+    } catch (error) {
+        console.log('Error', error)
+    }
+     
 }

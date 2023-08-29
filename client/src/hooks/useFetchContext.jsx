@@ -8,11 +8,11 @@ const useFetchContext = (submitData) => {
 
     useEffect(() => {
         if (auth){
-            fetchData({id: auth.id})
+            fetchData({ id: auth.id})
         }
     }, [auth])
     
-    return { data, isLoading, Error };
+    return { data, isLoading, Error, fetchData };
 }
  
 export 

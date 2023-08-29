@@ -1,29 +1,18 @@
-import { useApiData } from "../hooks"
+import { useApiData, useForm } from "../hooks"
 import { Form, Heading, InputField } from "./"
-import { useForm } from "../hooks"
+import { useAuth } from "../context/AuthContext"
+import { createGoalData, initialGoalData } from "../constant/requestText"
 
 const NewGoal = () => {
-
-    const submitData = {
-        method: 'POST',
-        url: '/api/create/goal',
-        baseurl: 'http://localhost:5273'
-    }
-
-    const initialValues = {
-        category: '',
-        area: '',
-        amount: '',
-        user: '64da703566eec4e5572af1de'
-    };
-
-    const { data, error, fetchData } = useApiData(submitData)
+    const { auth } = useAuth()
+    const { data, isLoading, error, fetchData } = useApiData(createGoalData)
 
     const onSubmit = async (formData) => {
-        await fetchData(formData)
+        await fetchData({...formData, ["user"]: auth.id})
     }
 
-    const { handleInputChange, useHandleSubmit } = useForm(initialValues, onSubmit)
+    const { handleInputChange, useHandleSubmit } = useForm(initialGoalData, onSubmit)
+    
     return ( 
         <>
             <Heading />
