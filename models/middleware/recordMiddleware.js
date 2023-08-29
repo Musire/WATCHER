@@ -12,6 +12,14 @@ module.exports = function(Schema) {
         account: accountName
       })
 
+      console.log("user", accountDoc)
+
+      if (!accountDoc) {
+        return 
+      }
+
+      
+
       accountDoc[recordType] += this.amount
       accountDoc.save()
 

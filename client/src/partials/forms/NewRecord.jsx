@@ -5,6 +5,7 @@ const NewRecord = () => {
     const { data, error, fetchData } = useApiData(createRecordData)
 
     const onSubmit = async (formData) => {
+        console.log('formData', {...formData, ["user"]: auth.id})
         await fetchData({...formData, ["user"]: auth.id})
     }
 
