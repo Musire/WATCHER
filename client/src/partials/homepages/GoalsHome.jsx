@@ -7,7 +7,7 @@ const GoalsHome = () => {
     return ( 
         <>
             <Heading path="/goals/new"/>
-            {!isLoading ? data.map(item => <Row key={item._id} transaction={item} dataType="goal"/>) : null}
+            {!isLoading ? data.map(item => <Row key={item._id} transaction={item} dataType="goals"/>) : null}
             {Error ? <h4 className="">{ Error }</h4> : null}
         </>
      );

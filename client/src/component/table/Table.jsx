@@ -6,7 +6,7 @@ const DateContainer = ({ date, transactions }) => {
         <h2 className="self-start text-xl">{date}</h2>
         <ul>
           {transactions.map((transaction) => (
-            <Row key={transaction._id} transaction={transaction} dataType='record'/>
+            <Row key={transaction._id} transaction={transaction} dataType='ledger'/>
           ))}
         </ul>
       </div>
