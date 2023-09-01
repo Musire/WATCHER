@@ -11,7 +11,7 @@ const DetailBanner = () => {
         currency: 'USD',
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
-      });
+    });
       
       const current = formatter.format(data.total);
 

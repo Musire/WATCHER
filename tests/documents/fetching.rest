@@ -29,3 +29,12 @@ Content-Type: application/json
 {
     "userID": "64da703566eec4e5572af1de"
 }
+
+###
+
+POST http://localhost:5273/api/fetch/single/record
+Content-Type: application/json
+
+{
+    "id": "64e7bec73f847ab88cbe3838"
+}

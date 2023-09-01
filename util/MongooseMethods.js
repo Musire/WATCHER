@@ -26,3 +26,11 @@ module.exports.fetchSortedRecords = async (Schema, targetID) => {
     }
      
 }
+
+module.exports.fetchSingleRecord = async (Schema, targetID) => {
+    try {
+        return await Schema.findOne({_id: targetID})
+    } catch (error) {
+        console.log("error", error)
+    }
+}
