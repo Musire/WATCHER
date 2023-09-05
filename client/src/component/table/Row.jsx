@@ -5,7 +5,7 @@ const Row = ({ transaction, dataType }) => {
     const typeConfig = {
         ledger : [transaction.category, transaction.area, transaction.amount],
         accounts : [transaction.account, transaction.currency, transaction.total],
-        goals : [transaction.category, transaction.area, transaction.amount]
+        goals : [transaction.category, transaction.area, transaction.target]
     }
 
     const config = typeConfig[dataType]

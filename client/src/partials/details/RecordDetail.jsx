@@ -20,6 +20,11 @@ const RecordDetail = ({ api, variant }) => {
                     {!isLoading && data ? <DetailPanel data={data} variant={variant}/> : <div className="">loading...</div> }
                 </ul>
             </div>
+            <span className="self-end w-full centered gap-x-4">
+                <button className="w-24 px-3 py-1 capitalize border-2 border-silver/20">edit</button>
+                <button className="w-24 px-3 py-1 capitalize border-2 border-silver/20">delete</button>
+            </span>
+            
         </>
      );
 }

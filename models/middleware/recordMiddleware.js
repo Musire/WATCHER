@@ -1,4 +1,5 @@
 const accountSchema = require('../Account')
+const goalSchema = require('../Goal')
 
 module.exports = function(Schema) {
   
@@ -12,17 +13,21 @@ module.exports = function(Schema) {
         account: accountName
       })
 
-      console.log("user", accountDoc)
-
-      if (!accountDoc) {
-        return 
+      if (accountDoc) {
+        accountDoc[recordType] += this.amount
+        accountDoc.save() 
       }
 
-      
+      if (recordType.toLowerCase() !== "income") {
+        let goalDoc = await goalSchema.findOne({user: userId, area: this.area.toLowerCase()})
 
-      accountDoc[recordType] += this.amount
-      accountDoc.save()
+        if (goalDoc) {
+          goalDoc.paid += this.amount
+          goalDoc.save()
+        }
+      }
 
       next();
+
     });
   };

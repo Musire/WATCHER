@@ -6,13 +6,28 @@ POST http://localhost:5273/api/create/record
 Content-Type: application/json
 
 {
+    "account": "citibanamex",
+    "type": "expense",
+    "amount": "4000",
+    "category": "household",
+    "area": "groceries",
+    "date": "08/05/2023", 
+    "user": "64f239b53465d35cb30ff12a"
+}
+
+### submit new record to the Database
+
+POST http://localhost:5273/api/create/record
+Content-Type: application/json
+
+{
     "account": "CitiBanamex",
     "type": "income",
-    "amount": "12500",
+    "amount": "50000",
     "category": "household",
     "area": "payment",
     "date": "08/05/2023", 
-    "user": "64e7bbcb34238379b17ea295"
+    "user": "64f239b53465d35cb30ff12a"
 }
 
 ### submit new account to the Database
@@ -24,7 +39,7 @@ Content-Type: application/json
     "account": "CitiBanamex",
     "currency": "MXN",
     "startingAmount": "30.00",
-    "user": "64e7bbcb34238379b17ea295"
+    "user": "64f239b53465d35cb30ff12a"
 }
 
 ### submit new goal to the Database
@@ -35,6 +50,6 @@ Content-Type: application/json
 {
     "category": "household",
     "area": "groceries",
-    "amount": "9000",
-    "user": "64da703566eec4e5572af1de"
+    "target": "9000",
+    "user": "64f239b53465d35cb30ff12a"
 }
